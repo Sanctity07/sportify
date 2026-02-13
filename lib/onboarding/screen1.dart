@@ -17,10 +17,7 @@ class OnBoardingScreen extends StatelessWidget {
         child: Stack(
           children: [
             Positioned.fill(
-              child: Image.asset(
-                "assets/images/stroke.png",
-                fit: BoxFit.cover,
-              ),
+              child: Image.asset("assets/images/stroke.png", fit: BoxFit.cover),
             ),
 
             Column(
@@ -74,7 +71,7 @@ class OnBoardingScreen extends StatelessWidget {
                         "KEEP AN EYE ON\nTHE STADIUM",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 28, 
+                          fontSize: 28,
                           fontWeight: FontWeight.w900,
                           height: 1.1,
                           letterSpacing: 0.5,
@@ -85,7 +82,7 @@ class OnBoardingScreen extends StatelessWidget {
                         "Watch sports live or highlights, read every\nnews from your smartphone",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 14, 
+                          fontSize: 14,
                           height: 1.4,
                           color: Colors.black87,
                         ),
@@ -94,7 +91,7 @@ class OnBoardingScreen extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 20), 
+                const SizedBox(height: 20),
 
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -110,7 +107,12 @@ class OnBoardingScreen extends StatelessWidget {
                             color: Colors.transparent,
                             child: InkWell(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=> SignInScreen()));
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SignInScreen(),
+                                  ),
+                                );
                               },
                               child: const Center(
                                 child: Text(
@@ -143,7 +145,12 @@ class OnBoardingScreen extends StatelessWidget {
                           child: InkWell(
                             borderRadius: BorderRadius.circular(8),
                             onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> CreateAccountScreen()));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CreateAccountScreen(),
+                                ),
+                              );
                             },
                             child: const Center(
                               child: Text(
@@ -162,7 +169,7 @@ class OnBoardingScreen extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 30), 
+                const SizedBox(height: 30),
               ],
             ),
           ],
