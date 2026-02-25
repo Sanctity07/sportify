@@ -1,6 +1,8 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:sportify/widgets/bottom_navbar.dart';
+
 
 class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({super.key});
@@ -39,6 +41,13 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
     // my backend will be here
 
     debugPrint(userData.toString());
+
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const BottomNavigation(),
+      ),
+    );
   }
 
   @override
@@ -51,7 +60,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
             Positioned.fill(
               child: Image.asset("assets/images/stroke.png", fit: BoxFit.cover),
             ),
-
             SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,25 +127,20 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
         children: [
           _buildTextField(hint: "First Name", controller: firstNameController),
           const SizedBox(height: 20),
-
           _buildTextField(hint: "Last Name", controller: lastNameController),
           const SizedBox(height: 20),
-
           _buildTextField(
             hint: "Email",
             controller: emailController,
             keyboardType: TextInputType.emailAddress,
           ),
           const SizedBox(height: 20),
-
           _buildTextField(
             hint: "Password",
             controller: passwordController,
             isPassword: true,
           ),
-
           const SizedBox(height: 10),
-
           const Align(
             alignment: Alignment.centerLeft,
             child: Text(
@@ -145,17 +148,11 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               style: TextStyle(fontSize: 12, color: Colors.black54),
             ),
           ),
-
           const SizedBox(height: 20),
-
           _buildTerms(),
-
           const SizedBox(height: 30),
-
           _buildCreateAccountButton(),
-
           const SizedBox(height: 20),
-
           const Text(
             "By agreeing to the above terms, you are consenting that your personal information will be collected, stored, and processed in the United States and the European Union on behalf of Sportify Properties, Inc.",
             textAlign: TextAlign.center,
@@ -184,10 +181,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide.none,
         ),
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 18,
-        ),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
       ),
     );
   }
@@ -205,31 +200,12 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
             });
           },
         ),
-        Expanded(
+        const Expanded(
           child: Padding(
-            padding: const EdgeInsets.only(top: 12),
-            child: RichText(
-              text: const TextSpan(
-                style: TextStyle(color: Colors.black87, fontSize: 13),
-                children: [
-                  TextSpan(text: "I agree to the "),
-                  TextSpan(
-                    text: "Terms",
-                    style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(text: " and "),
-                  TextSpan(
-                    text: "Privacy Policy",
-                    style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
+            padding: EdgeInsets.only(top: 12),
+            child: Text(
+              "I agree to the Terms and Privacy Policy",
+              style: TextStyle(fontSize: 13),
             ),
           ),
         ),
