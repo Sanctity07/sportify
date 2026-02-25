@@ -14,8 +14,8 @@ class BottomNavigation extends StatefulWidget {
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  int _selectedIndex = 3; // Profile selected by default
-  final PageController _pageController = PageController();
+  int _selectedIndex = 3;
+  final PageController _pageController = PageController(initialPage: 3);
 
   final List<_NavItem> _items = const [
     _NavItem(icon: Icons.home_outlined, label: 'Home'),
