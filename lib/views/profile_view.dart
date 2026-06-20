@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sportify/views/follow_players_view.dart';
 import 'package:sportify/views/follow_teams_view.dart';
 import 'package:sportify/views/notification_view.dart';
+import 'package:sportify/views/privacy_view.dart';
+import 'package:sportify/views/customer_support_view.dart';
+import 'package:sportify/views/app_info_view.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -150,54 +153,69 @@ class ProfileView extends StatelessWidget {
       ),
     );
   }
+Widget _buildOtherOptions(BuildContext context) {
+  final options = [
+    {
+      "title": "Notifications",
+      "page": const NotificationView(),
+    },
+    {
+      "title": "Privacy",
+      "page": const PrivacyView(),
+    },
+    {
+      "title": "Customer Support",
+      "page": const CustomerSupportView(),
+    },
+    {
+      "title": "App info",
+      "page": const AppInfoView(),
+    },
+  ];
 
-  Widget _buildOtherOptions(BuildContext context) {
-    final options = [
-      "Notifications",
-      "Privacy",
-      "Customer Support",
-      "App info",
-      "App info",
-    ];
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-          child: Text(
-            "OTHERS OPTIONS",
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w900,
-              letterSpacing: 1,
-              color: Colors.black87,
-            ),
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+        child: Text(
+          "OTHER OPTIONS",
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w900,
+            letterSpacing: 1,
+            color: Colors.black87,
           ),
         ),
-        ...options.map(
-          (option) => Column(
-            children: [
-              ListTile(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 20),
-                title: Text(
-                  option,
-                  style: const TextStyle(fontSize: 15, color: Colors.black87),
-                ),
-                trailing: const Icon(
-                  Icons.chevron_right,
-                  color: Colors.black45,
-                  size: 20,
-                ),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const NotificationView()));
-                },
+      ),
+      ...options.map(
+        (option) => Column(
+          children: [
+            ListTile(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+              title: Text(
+                option["title"] as String,
+                style: const TextStyle(fontSize: 15, color: Colors.black87),
               ),
-              const Divider(height: 1, color: Color(0xFFFFBDBD)),
-            ],
-          ),
+              trailing: const Icon(
+                Icons.chevron_right,
+                color: Colors.black45,
+                size: 20,
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => option["page"] as Widget,
+                  ),
+                );
+              },
+            ),
+            const Divider(height: 1, color: Color(0xFFFFBDBD)),
+          ],
         ),
-      ],
-    );
-  }
+      ),
+    ],
+  );
+}
 }
